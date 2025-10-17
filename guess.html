@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <head>
-    <meta charset="utf-8">
-    <title>我是標題</title>
-    <script src="guess.js" defer></script>
+  <meta charset="utf-8">
+  <title>猜數字遊戲</title>
+  <link rel="stylesheet" href="guessStyle.css">
+  <script src="guess.js" defer></script>
 </head>
 <body>
-    <div>
-        <h1>猜數字遊戲</h1>
-        <label for="guessField">猜一個數字 (1 到 100):</label>
-        <input type="number" class="guessField" id="guessField" min="1" max="100">
-        <button class="guessSubmit">提交</button>
-        <div class="result">0</div>
-        <div class="count">0</div>
-      </div>
+  <div class="container">
+    <h1>猜數字遊戲 🎯</h1>
+    <p>請輸入 1 ~ 100 之間的數字</p>
 
+    <input type="number" class="guessField" id="guessField" min="1" max="100" />
+    <button class="guessSubmit">提交</button>
+    <button class="restartBtn">重新開始</button>
+
+    <div class="result">猜測結果：</div>
+    <div class="count">猜測次數：0</div>
+    <p class="guesses">已猜過的數字：</p>
+    <div class="feedback"></div>
+
+    <div class="timer">剩餘時間：30 秒</div>
+    <div class="score">總分：0</div>
+
+  </div>
 </body>
 </html>
