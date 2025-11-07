@@ -1,0 +1,27 @@
+{
+  "name": "nickli00-bdhs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "draw.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickli00-bdhs/nickli00-bdhs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nickli00-bdhs/nickli00-bdhs/issues"
+  },
+  "homepage": "https://github.com/nickli00-bdhs/nickli00-bdhs#readme",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.15.3"
+  }
+}

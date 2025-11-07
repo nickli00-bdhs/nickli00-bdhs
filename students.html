@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>學生資料表</title>
+  <style>
+    body {
+      font-family: "Microsoft JhengHei", Arial, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 20px auto;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px 15px;
+      text-align: center;
+    }
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    #loading {
+      text-align: center;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <h1>學生資料表</h1>
+  <div id="loading">資料載入中...</div>
+  <table id="studentTable" style="display:none;">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>id</th>
+        <th>a</th>
+        <th>b</th>
+      </tr>
+    </thead>
+    <tbody id="studentBody"></tbody>
+  </table>
+
+  <script>
+    // 當頁面載入完成時
+    document.addEventListener("DOMContentLoaded", async () => {
+      try {
+        const response = await fetch("http://localhost:3000/get_all_students");
+        const data = await response.json();
+
+        const table = document.getElementById("studentTable");
+        const tbody = document.getElementById("studentBody");
+        const loading = document.getElementById("loading");
+
+        // 清除 loading 文字
+        loading.style.display = "none";
+        table.style.display = "table";
+
+        // 將每筆資料加到表格中
+        data.forEach(row => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${row.name}</td>
+            <td>${row.id}</td>
+            <td>${row.a}</td>
+            <td>${row.b}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } catch (error) {
+        document.getElementById("loading").innerText = "載入失敗，請檢查伺服器或資料庫。";
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>
